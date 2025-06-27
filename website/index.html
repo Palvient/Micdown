@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/styles/style.css">
+    <link rel="stylesheet" href="src/styles/media.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="public/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="public/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="public/icons/favicon-16x16.png">
+    <link rel="manifest" href="public/site.webmanifest">  
+    <title>MicDown</title>
+</head>
+<body>
+    <header>
+      <img src="public/icons/bars-solid.svg" alt="Menu" class="burger-menu" id="menuIcon">
+        <h2 class="logo">Home</h2>
+        <nav class="navigation hidden">
+            <a href="#">Home</a>
+            <a href="src/pages/about.html">About</a>
+            <a href="src/pages/chat.html">Chat</a>
+            <a href="src/pages/pricing.html">Pricing</a>
+            <a class="login" href="src/pages/login.html">Login</a>
+            <a href="src/pages/termsandconditions.html">Terms of Service & Privacy Policy</a>
+            </div>
+        </nav>
+    </header>
+    <section class="hero-section hidden">
+      <div class="hero-left">
+        <h1>Micdown</h1>
+        <h2>Download Now</h2>
+        <div class="download-buttons">
+          <a href="test-download.exe" class="download-btn" download>
+            <img src="public/icons/windows-brands-solid.svg" alt="Windows" class="os-icon">
+            For Windows
+          </a>
+          <a href="test-download.dmg" class="download-btn" download>
+            <img src="public/icons/apple-brands.svg" alt="Mac" class="os-icon">
+            For Mac
+          </a>
+          <a href="test-download.deb" class="download-btn" download>
+            <img src="public/icons/linux-brands.svg" alt="Linux" class="os-icon">
+            For Linux
+          </a>
+        </div>
+        <p>Get MicDown for your device. Fast, free, and secure!</p>
+        <p>Or, try our web app. Works the same!</p>
+      </div>
+      <div class="hero-right video">
+        <video src="public/media/MICDOWN.mp4" width="400" loop id="heroVideo" muted></video>
+      </div>
+    </section>
+    <section class="reviews-section hidden">
+      <h2>What People are saying about us</h2>
+      <div class="reviews">
+        <div class="review">
+          <img src="public/icons/circle-user-solid.svg" alt="User" class="review-avatar"/>
+          <p>"MicDown is the best chat app I've ever used! It's fast, reliable, and has a great user interface."</p>
+          <h3>- Alex</h3>
+        </div>
+        <div class="review">
+          <img src="public/icons/circle-user-solid.svg" alt="User" class="review-avatar"/>
+          <p>"I love MicDown! The features are amazing and the support team is very responsive."</p>
+          <h3>- Jamie</h3>
+        </div>
+        <div class="review">
+          <img src="public/icons/circle-user-solid.svg" alt="User" class="review-avatar"/>
+          <p>"MicDown has transformed the way I communicate with my friends. Highly recommend!"</p>
+          <h3>- Taylor</h3>
+        </div>
+    </section>
+    <section class="safety-section hidden">
+      <h2>Safety and Security</h2>
+      <p>
+        Your privacy and safety are our top priorities. MicDown uses secure encryption to protect your messages and data. Our moderation team and smart censor bots help keep conversations friendly and safe for everyone. Enjoy chatting with confidence here at MicDown!
+      </p>
+    </section>
+    <section class="faq-section hidden">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq">
+        <div class="faq-item">
+          <h3>Is MicDown free?</h3>
+          <p>Yes, MicDown is free for everyone!</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can I use MicDown on mobile?</h3>
+          <p>Yes, our web app works great on mobile browsers.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How do I get started?</h3>
+          <p>Just download the app or use the web version to sign up and start chatting.</p>
+        </div>
+      </div>
+    </section>
+    <section class="devs-section hidden">
+      <div class="devs-icon">
+        <img src="public/icons/laptop-code-solid.svg" alt="Code Icon" />
+      </div>
+      <h2>Devs Welcome!</h2>
+      <p class="devs-lead">
+        Are you a developer? Build your own bots, integrations, and tools for MicDown!  
+        Our platform is open for APIs, automation, and creative extensions.
+      </p>
+      <div class="devs-actions">
+        <a href="#" class="devs-btn">View API Docs</a>
+        <a href="#" class="devs-btn">Join Dev Community</a>
+      </div>
+      <p class="devs-note">
+        Have an idea? <a href="mailto:contact@micdown.com">Contact us</a> or contribute on GitHub!
+      </p>
+    </section>
+    <section class="cta-section">
+      <h2>What are you waiting for? Let's get started!</h2>
+      <a href="login.html" class="cta-btn">Sign up!</a>
+    </section>
+    <script src="src/scripts/fadeElement.js"></script>
+    <script src ="src/scripts/burger-toggle.js"></script>
+    <script defer src="src/scripts/fadeElement.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

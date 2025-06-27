@@ -1,0 +1,75 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #131316;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form-container {
+    background: #1e1e1e;
+    border-radius: 12px;
+    padding: 2rem;
+    width: 320px;
+    overflow: hidden;
+    transition: height 0.4s ease;
+    position: relative;
+    box-shadow: 0 0 15px 5px rgba(79, 92, 228, 1);
+    height: max-content;
+}
+
+form {
+  display: none;
+  flex-direction: column;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+form.active {
+  display: flex;
+}
+
+input[type="text"], input[type="password"], input[type="date"] {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: none;
+}
+
+button {
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  background: #4f5ce4;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.switch-btn {
+  background: none;
+  border: none;
+  color: #999;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.header{
+  color: white;
+}
+.close-btn{
+  position: absolute;   /* position it inside wrapper */
+  top: 20px;            /* adjust vertical position */
+  right: 10px;          /* align to right with some padding */
+  width: 20px;          /* set a small size */
+  height: 20px;         /* keep aspect ratio or set explicitly */
+  cursor: pointer;      
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

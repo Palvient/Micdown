@@ -1,0 +1,20 @@
+<h2>Chat</h2>
+
+<ul>
+<%= for message <- @messages do %>
+  <li>
+    <%= if message.sender_id == @current_user.id do %>
+      <b>You:</b> <%= message.content %>
+    <% else %>
+      <b>Them:</b> <%= message.content %>
+    <% end %>
+  </li>
+<% end %>
+</ul>
+
+<form method="post" action={Routes.message_path(@conn, :create)}>
+  <input type="hidden" name="message[receiver_id]" value={@receiver_id} />
+  <textarea name="message[content]" rows="3" cols="40"></textarea>
+  <br />
+  <button type="submit">Send</button>
+</form>

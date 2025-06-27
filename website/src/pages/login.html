@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MicDown Login</title>
+  <link rel="stylesheet" href="../CSS/loginsStyle.css">
+  </style>
+</head>
+<body>
+  <div id="formContainer" class="form-container" style="height: 300px">
+    <form id="loginForm" class="active">
+      <h2 class="header">Login</h2>
+      <img src="../assets/x-solid.svg" alt="Close" class="close-btn" onclick="window.location.href='index.html'">
+      <input type="text" placeholder="Username" required name="username">
+      <input type="password" placeholder="Password" required name="password">
+      <button type="submit">Login</button>
+      <button type="button" class="switch-btn" onclick="showSignUp()">Sign Up</button>
+    </form>
+
+    <form id="signupForm">
+      <h2 class="header">Sign Up</h2>
+      <img src="../assets/x-solid.svg" alt="Close" class="close-btn" onclick="window.location.href='index.html'">
+      <input type="text" placeholder="Email" required name="email">
+      <input type="text" placeholder="Username" required name="username">
+      <input type="password" placeholder="Password" required name="password">
+      <button type="button" onclick="goToNextStep()">Next</button>
+      <button type="button" class="switch-btn" onclick="showLogin()">Back to Login</button>
+    </form>
+
+    <form id="detailsForm">
+      <img src="../assets/x-solid.svg" alt="Close" class="close-btn" onclick="window.location.href='index.html'">
+      <h2 class="header">Additional Info</h2>
+      <input type="date" required>
+      <label>
+        <input type="checkbox" required> I agree to the <a href="#">ToS</a> and <a href="#">Privacy Policy</a>
+      </label>
+      <button type="submit">Finish Sign Up</button>
+    </form>
+  </div>
+
+  <script src="../JS/register-data.js"></script>
+</body>
+</html>
