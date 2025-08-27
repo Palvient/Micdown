@@ -2,7 +2,7 @@ import Config
 
 # Configure your database
 config :micdown, Micdown.Repo,
-  username: "micdown_dev",
+  username: "micdown_dev_user",
   password: "micdownDEVdb",
   hostname: "localhost",
   database: "micdown_dev",

@@ -27,6 +27,7 @@ defmodule MicdownWeb.Router do
     pipe_through :api
 
     post "/register", RegisterController, :create
+    post "/login", SessionController, :create
   end
 
 

@@ -3,15 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MicDown Login</title>
-  <link rel="stylesheet" href="../CSS/loginsStyle.css">
+  <title>Micdown Login</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../public/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../public/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../..public/icons/favicon-16x16.png">
+  <link rel="stylesheet" href="../styles/loginStyle.css">
   </style>
 </head>
 <body>
   <div id="formContainer" class="form-container" style="height: 300px">
     <form id="loginForm" class="active">
       <h2 class="header">Login</h2>
-      <img src="../assets/x-solid.svg" alt="Close" class="close-btn" onclick="window.location.href='index.html'">
+      <a href="../../index.html">
+        <img src="../../public/icons/x-solid.svg" alt="Close" class="close-btn">
+      </a>
       <input type="text" placeholder="Username" required name="username">
       <input type="password" placeholder="Password" required name="password">
       <button type="submit">Login</button>
@@ -20,7 +25,7 @@
 
     <form id="signupForm">
       <h2 class="header">Sign Up</h2>
-      <img src="../assets/x-solid.svg" alt="Close" class="close-btn" onclick="window.location.href='index.html'">
+      <img src="../../public/icons/x-solid.svg" alt="Close" class="close-btn" onclick="window.location.href='index.html'">
       <input type="text" placeholder="Email" required name="email">
       <input type="text" placeholder="Username" required name="username">
       <input type="password" placeholder="Password" required name="password">
@@ -29,7 +34,7 @@
     </form>
 
     <form id="detailsForm">
-      <img src="../assets/x-solid.svg" alt="Close" class="close-btn" onclick="window.location.href='index.html'">
+      <img src="../../public/icons/x-solid.svg" alt="Close" class="close-btn" onclick="window.location.href='index.html'">
       <h2 class="header">Additional Info</h2>
       <input type="date" required>
       <label>
@@ -39,6 +44,6 @@
     </form>
   </div>
 
-  <script src="../JS/register-data.js"></script>
+  <script src="../scripts/login-script.js"></script>
 </body>
 </html>

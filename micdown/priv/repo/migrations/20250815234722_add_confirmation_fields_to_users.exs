@@ -4,8 +4,7 @@ defmodule Micdown.Repo.Migrations.AddConfirmationFieldsToUsers do
   def change do
     alter table(:users) do
       add :confirmation_token, :string
-      add :confirmation_sent_at, :naive_datetime
-      add :confirmed_at, :naive_datetime
+      add :confirmation_sent_at, :utc_datetime
     end
   end
 end

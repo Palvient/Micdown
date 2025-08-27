@@ -9,10 +9,6 @@ defmodule Micdown.Accounts.User do
     field :birthdate, :date
     field :password, :string, virtual: true
     field :hashed_password, :string
-    field :confirmed_at, :naive_datetime
-    field :confirmation_token, :string
-    field :confirmation_sent_at, :naive_datetime
-  # ... your other fields
 
   timestamps()
   end
