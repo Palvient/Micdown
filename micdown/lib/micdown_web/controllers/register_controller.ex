@@ -11,16 +11,8 @@ defmodule MicdownWeb.RegisterController do
 
     case Repo.insert(changeset) do
       {:ok, user} ->
-        # Add confirmation token & timestamp
-        user =
-          user
-          |> generate_confirmation_token()
-          |> Repo.update!()
-
-        # Send confirmation email (implement this)
-        Micdown.Email.confirmation_email(user)
-        |> Micdown.Mailer.deliver()
-
+        IO.puts("user: #{user.username} successfully registered")
+        # Registration successful
         json(conn, %{
           id: user.id,
           username: user.username,
@@ -38,14 +30,5 @@ defmodule MicdownWeb.RegisterController do
         |> put_status(:unprocessable_entity)
         |> json(%{status: "error", errors: errors})
     end
-  end
-
-  defp generate_confirmation_token(user) do
-    token = :crypto.strong_rand_bytes(32) |> Base.url_encode64(padding: false)
-
-    Ecto.Changeset.change(user,
-      confirmation_token: token,
-      confirmation_sent_at: NaiveDateTime.utc_now() |> NaiveDateTime.truncate(:second)
-    )
   end
 end
