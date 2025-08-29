@@ -50,7 +50,7 @@ jobs:
             teamReviewers.push('Palvient/frontend'); // 👈 Case-sensitive, must match exactly
             }
 
-            if (changedDirs.includes('backend')) {
+            if (changedDirs.includes('server')) {
               teamReviewers.push('Palvient/backend');
             }
             if (teamReviewers.length > 0) {
