@@ -47,11 +47,11 @@ jobs:
             const teamReviewers = [];
 
             if (changedDirs.includes('frontend')) {
-            teamReviewers.push('Palvient/frontend'); // 👈 Case-sensitive, must match exactly
+            teamReviewers.push('@Palvient/frontend'); // 👈 Case-sensitive, must match exactly
             }
 
             if (changedDirs.includes('server')) {
-              teamReviewers.push('Palvient/backend');
+              teamReviewers.push('@Palvient/backend');
             }
             if (teamReviewers.length > 0) {
               await github.rest.pulls.requestReviewers({
