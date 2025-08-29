@@ -47,13 +47,12 @@ jobs:
             const teamReviewers = [];
 
             if (changedDirs.includes('frontend')) {
-              teamReviewers.push('Palvient/frontend'); // replace with your real team slug
+            teamReviewers.push('Palvient/frontend'); // 👈 Case-sensitive, must match exactly
             }
 
-            if (changedDirs.includes('server')) {
-              teamReviewers.push('Palvient/backend'); // replace with your real team slug
+            if (changedDirs.includes('backend')) {
+              teamReviewers.push('Palvient/backend');
             }
-
             if (teamReviewers.length > 0) {
               await github.rest.pulls.requestReviewers({
                 owner: context.repo.owner,
