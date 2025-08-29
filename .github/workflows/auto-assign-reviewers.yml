@@ -1,43 +1,68 @@
-name: Auto Assign Teams Based on PR Labels
+name: Auto Assign Teams Based on Directory Changes
 
 on:
   pull_request:
-    types: [opened, labeled, reopened, synchronize]
+    types: [opened, reopened, synchronize]
 
 jobs:
   assign-teams:
     runs-on: ubuntu-latest
 
     permissions:
-      pull-requests: write  # Needed to request reviewers
+      pull-requests: write
 
     steps:
-      - name: Assign GitHub teams as reviewers
+      - name: Get changed files
+        uses: actions/github-script@v7
+        id: get-changes
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const pr = context.payload.pull_request;
+            const files = await github.paginate(
+              github.rest.pulls.listFiles,
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: pr.number
+              }
+            );
+
+            const changedDirs = new Set();
+
+            for (const file of files) {
+              const topDir = file.filename.split('/')[0];
+              changedDirs.add(topDir);
+            }
+
+            return Array.from(changedDirs);
+
+      - name: Assign teams based on changed directories
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const pr = context.payload.pull_request;
-            const labels = pr.labels.map(label => label.name);
-            const team_reviewers = [];
+            const changedDirs = JSON.parse(`${{ steps.get-changes.outputs.result }}`);
+            const teamReviewers = [];
 
-            // Map PR labels to teams
-            if (labels.includes('frontend')) {
-              team_reviewers.push('Palvient/frontend'); // Replace with your actual team
+            if (changedDirs.includes('frontend')) {
+              teamReviewers.push('Palvient/frontend'); // replace with your real team slug
             }
 
-            if (labels.includes('server')) {
-              team_reviewers.push('Palvient/backend');  // Replace with your actual team
+            if (changedDirs.includes('server')) {
+              teamReviewers.push('Palvient/backend'); // replace with your real team slug
             }
 
-            if (team_reviewers.length > 0) {
+            if (teamReviewers.length > 0) {
               await github.rest.pulls.requestReviewers({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 pull_number: pr.number,
-                team_reviewers
+                team_reviewers: teamReviewers
               });
-              console.log(`Requested team reviewers: ${team_reviewers.join(', ')}`);
+
+              console.log(`Requested review from: ${teamReviewers.join(', ')}`);
             } else {
-              console.log("No matching labels found. No teams requested.");
+              console.log("No matching directories found. No team reviewers assigned.");
             }
