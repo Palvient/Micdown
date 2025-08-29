@@ -1,0 +1,43 @@
+name: Auto Assign Teams Based on PR Labels
+
+on:
+  pull_request:
+    types: [opened, labeled, reopened, synchronize]
+
+jobs:
+  assign-teams:
+    runs-on: ubuntu-latest
+
+    permissions:
+      pull-requests: write  # Needed to request reviewers
+
+    steps:
+      - name: Assign GitHub teams as reviewers
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const pr = context.payload.pull_request;
+            const labels = pr.labels.map(label => label.name);
+            const team_reviewers = [];
+
+            // Map PR labels to teams
+            if (labels.includes('frontend')) {
+              team_reviewers.push('Palvient/frontend'); // Replace with your actual team
+            }
+
+            if (labels.includes('server')) {
+              team_reviewers.push('Palvient/backend');  // Replace with your actual team
+            }
+
+            if (team_reviewers.length > 0) {
+              await github.rest.pulls.requestReviewers({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: pr.number,
+                team_reviewers
+              });
+              console.log(`Requested team reviewers: ${team_reviewers.join(', ')}`);
+            } else {
+              console.log("No matching labels found. No teams requested.");
+            }
